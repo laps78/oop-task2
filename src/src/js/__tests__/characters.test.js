@@ -7,18 +7,18 @@ import Zombie from '../zombie';
 import Daemon from '../daemon';
 
 test('Character should create right character', () => {
-  const personConstrucor = new Character('testChar', 'Bowman');
+  const personConstructor = new Character('testChar', 'Bowman');
   const personName = {
     name: 'testChar',
     type: 'Bowman',
     level: 1,
     health: 100,
   };
-  expect(personConstrucor).toEqual(personName);
+  expect(personConstructor).toEqual(personName);
 });
 
 test('Bowman should create character \'bowman\' with correct characteristics', () => {
-  const personConstrucor = new Bowman('Tom');
+  const personConstructor = new Bowman('Tom');
   const personName = {
     health: 100,
     level: 1,
@@ -28,11 +28,11 @@ test('Bowman should create character \'bowman\' with correct characteristics', (
     type: 'Bowman',
   };
 
-  expect(personConstrucor).toEqual(personName);
+  expect(personConstructor).toEqual(personName);
 });
 
 test('Swordsman should create character \'bowman\' with correct characteristics', () => {
-  const personConstrucor = new Swordsman('Jack');
+  const personConstructor = new Swordsman('Jack');
   const personName = {
     health: 100,
     level: 1,
@@ -42,11 +42,11 @@ test('Swordsman should create character \'bowman\' with correct characteristics'
     type: 'Swordsman',
   };
 
-  expect(personConstrucor).toEqual(personName);
+  expect(personConstructor).toEqual(personName);
 });
 
 test('Magician should create character \'Magician\' with correct characteristics', () => {
-  const personConstrucor = new Magician('Oleg');
+  const personConstructor = new Magician('Oleg');
   const personName = {
     health: 100,
     level: 1,
@@ -56,11 +56,11 @@ test('Magician should create character \'Magician\' with correct characteristics
     type: 'Magician',
   };
 
-  expect(personConstrucor).toEqual(personName);
+  expect(personConstructor).toEqual(personName);
 });
 
 test('Undead should create character \'Undead\' with correct characteristics', () => {
-  const personConstrucor = new Undead('Carl');
+  const personConstructor = new Undead('Carl');
   const personName = {
     health: 100,
     level: 1,
@@ -70,11 +70,11 @@ test('Undead should create character \'Undead\' with correct characteristics', (
     type: 'Undead',
   };
 
-  expect(personConstrucor).toEqual(personName);
+  expect(personConstructor).toEqual(personName);
 });
 
 test('Zombie should create character \'Zombie\' with correct characteristics', () => {
-  const personConstrucor = new Zombie('Hans');
+  const personConstructor = new Zombie('Hans');
   const personName = {
     health: 100,
     level: 1,
@@ -84,11 +84,11 @@ test('Zombie should create character \'Zombie\' with correct characteristics', (
     type: 'Zombie',
   };
 
-  expect(personConstrucor).toEqual(personName);
+  expect(personConstructor).toEqual(personName);
 });
 
 test('Daemon should create character \'Daemon\' with correct characteristics', () => {
-  const personConstrucor = new Daemon('Phil');
+  const personConstructor = new Daemon('Phil');
   const personName = {
     health: 100,
     level: 1,
@@ -98,5 +98,34 @@ test('Daemon should create character \'Daemon\' with correct characteristics', (
     type: 'Daemon',
   };
 
-  expect(personConstrucor).toEqual(personName);
+  expect(personConstructor).toEqual(personName);
+});
+
+test('Method Character.levelUp() should modify character with correct characteristics', () => {
+  const personConstructor = new Daemon('Phil');
+  const afterLevelUp = {
+    health: 100,
+    level: 2,
+    attack: 12,
+    defence: 48,
+    name: 'Phil',
+    type: 'Daemon',
+  };
+  expect(personConstructor.levelUp()).toEqual(afterLevelUp);
+});
+
+test('Method Character.damage(points) should modify character by damaging it', () => {
+  const personConstructor = new Daemon('Phil');
+  const damagedHealth = 100 - 10 * (1 - 40 / 100);
+  const damaged = {
+    health: damagedHealth,
+    level: 1,
+    attack: 10,
+    defence: 40,
+    name: 'Phil',
+    type: 'Daemon',
+  };
+  personConstructor.damage(10);
+
+  expect(personConstructor).toEqual(damaged);
 });
